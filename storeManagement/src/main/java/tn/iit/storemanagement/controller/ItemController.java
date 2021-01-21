@@ -7,6 +7,8 @@ import tn.iit.storemanagement.service.ItemService;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/item")
 public class ItemController {
@@ -17,7 +19,7 @@ public class ItemController {
     }
 
     @PostMapping
-    public void createItem(@RequestBody ItemDto itemDto) {
+    public void createItem(@Valid @RequestBody ItemDto itemDto) {
         itemService.save(itemDto);
     }
 
@@ -27,7 +29,7 @@ public class ItemController {
     }
 
     @PutMapping
-    public void updateItem(@RequestBody ItemDto itemDto) {
+    public void updateItem(@Valid @RequestBody ItemDto itemDto) {
         itemService.update(itemDto);
     }
 

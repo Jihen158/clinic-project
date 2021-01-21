@@ -2,7 +2,6 @@ package tn.iit.medical.dto;
 
 
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class MedicalFileDto {
@@ -12,8 +11,7 @@ public class MedicalFileDto {
             max = 100
     )
     private String patientName;
-    private LocalDateTime arrivalDate;
-    private List<FileDetailsDto> prescribedMedications;
+    private List<FileDetailsDto> detailsDtos;
 
     public Integer getId() {
         return id;
@@ -31,19 +29,12 @@ public class MedicalFileDto {
         this.patientName = patientName;
     }
 
-    public LocalDateTime getArrivalDate() {
-        return arrivalDate;
-    }
+	public List<FileDetailsDto> getDetailsDtos() {
+		return detailsDtos;
+	}
 
-    public void setArrivalDate(LocalDateTime arrivalDate) {
-        this.arrivalDate = arrivalDate;
-    }
+	public void setDetailsDtos(List<FileDetailsDto> detailsDtos) {
+		this.detailsDtos = detailsDtos;
+	}
 
-    public List<FileDetailsDto> getPrescribedMedications() {
-        return prescribedMedications;
-    }
-
-    public void setPrescribedMedications(List<FileDetailsDto> prescribedMedications) {
-        this.prescribedMedications = prescribedMedications;
-    }
 }

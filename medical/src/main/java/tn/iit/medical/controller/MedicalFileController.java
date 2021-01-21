@@ -1,11 +1,13 @@
 package tn.iit.medical.controller;
 
 import org.springframework.web.bind.annotation.*;
-import tn.iit.medical.entity.MedicalFile;
+
+import tn.iit.medical.dto.MedicalFileDto;
 import tn.iit.medical.service.MedicalFileService;
 
 import javax.validation.Valid;
-import java.util.List;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/medicalFiles")
@@ -17,19 +19,19 @@ public class MedicalFileController {
     }
 
     @PostMapping
-    public void createMedicalFile(@Valid @RequestBody MedicalFile medicalFile) {
-        medicalFileService.save(medicalFile);
+    public void createMedicalFile(@Valid @RequestBody MedicalFileDto medicalFileDto) {
+        medicalFileService.save(medicalFileDto);
     }
 
     @GetMapping
-    public List<MedicalFile> getMedicalFiles() {
-        List<MedicalFile> medicalFileList = medicalFileService.findAll();
+    public Collection<MedicalFileDto> getMedicalFiles() {
+        Collection<MedicalFileDto> medicalFileList = medicalFileService.findAll();
         return medicalFileList;
     }
 
     @PutMapping
-    public void updateMedicalFile(@Valid @RequestBody MedicalFile medicalFile) {
-        medicalFileService.update(medicalFile);
+    public void updateMedicalFile(@Valid @RequestBody MedicalFileDto medicalFileDto) {
+        medicalFileService.update(medicalFileDto);
     }
 
     @DeleteMapping("/{id}")

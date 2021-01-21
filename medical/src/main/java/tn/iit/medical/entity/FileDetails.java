@@ -1,6 +1,5 @@
 package tn.iit.medical.entity;
 
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;

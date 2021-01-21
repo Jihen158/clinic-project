@@ -1,10 +1,15 @@
 package tn.iit.medical.controller;
 
 import org.springframework.web.bind.annotation.*;
+
+import tn.iit.medical.dto.FileDetailsDto;
 import tn.iit.medical.entity.FileDetails;
+import tn.iit.medical.mapper.FileDetailsMapper;
 import tn.iit.medical.service.FileDetailsService;
 
 import javax.validation.Valid;
+
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -17,19 +22,18 @@ public class FileDetailsController {
     }
 
     @PostMapping
-    public void createPrescribedMedication(@Valid @RequestBody FileDetails fileDetails) {
-        fileDetailsService.save(fileDetails);
+    public void createPrescribedMedication(@Valid @RequestBody FileDetailsDto fileDetailsDto) {
+        fileDetailsService.save(fileDetailsDto);
     }
 
     @GetMapping
-    public List<FileDetails> getPrescribedMedication() {
-        List<FileDetails> fileDetails = fileDetailsService.findAll();
-        return fileDetails;
+    public Collection<FileDetailsDto> getPrescribedMedication() {
+        return fileDetailsService.findAll();
     }
 
     @PutMapping
-    public void updatePrescribedMedication(@Valid @RequestBody FileDetails fileDetails) {
-        fileDetailsService.update(fileDetails);
+    public void updatePrescribedMedication(@Valid @RequestBody FileDetailsDto fileDetailsDto) {
+        fileDetailsService.update(fileDetailsDto);
     }
 
     @DeleteMapping("/{id}")
