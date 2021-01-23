@@ -15,7 +15,6 @@ public class FileDetailsMapper {
 		fileDetailsDto.setUnitPrice(fileDetails.getUnitPrice());
 		fileDetailsDto.setQuantity(fileDetails.getQuantity());
 		fileDetailsDto.setArrivalDate(fileDetails.getArrivalDate());
-		//fileDetails.setMedicalFile(fileDetailsDto.getMedicalFile());
 		return fileDetailsDto;	
 	}
 	public static FileDetails convertFDDtoToFDE(FileDetailsDto fileDetailsDto) {
@@ -25,7 +24,6 @@ public class FileDetailsMapper {
 		fileDetails.setUnitPrice(fileDetailsDto.getUnitPrice());
 		fileDetails.setQuantity(fileDetailsDto.getQuantity());
 		fileDetails.setArrivalDate(fileDetailsDto.getArrivalDate());
-		//fileDetails.setMedicalFile(fileDetailsDto.getMedicalFile());
 		return fileDetails;	
 	}
 	public static Collection<FileDetailsDto> convertFDEToFDDtos(Collection<FileDetails> details){

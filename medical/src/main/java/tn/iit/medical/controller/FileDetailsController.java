@@ -1,25 +1,19 @@
 package tn.iit.medical.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import tn.iit.medical.dto.FileDetailsDto;
-import tn.iit.medical.entity.FileDetails;
-import tn.iit.medical.mapper.FileDetailsMapper;
 import tn.iit.medical.service.FileDetailsService;
-
 import javax.validation.Valid;
-
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/fileDetails")
 public class FileDetailsController {
+	
+	@Autowired
     private FileDetailsService fileDetailsService;
-
-    public FileDetailsController(FileDetailsService fileDetailsService) {
-        this.fileDetailsService = fileDetailsService;
-    }
 
     @PostMapping
     public void createPrescribedMedication(@Valid @RequestBody FileDetailsDto fileDetailsDto) {

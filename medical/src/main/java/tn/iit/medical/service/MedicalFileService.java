@@ -44,16 +44,13 @@ public class MedicalFileService {
         return medicalFileDto;             
     }
     
-
     public void deleteAll() {
         medicalFileDao.deleteAll();;
     }
     public void deleteById(Integer id) {
         medicalFileDao.deleteById(id);
     }
-    public Collection<MedicalFileDto> findAll() {
-    	List<MedicalFile> files = medicalFileDao.findAll();
-    	Collection<MedicalFileDto> medList = MedicalFileMapper.convertEntToDtos(files);
-        return medList;
+    public Collection<MedicalFileDto> getAll() {
+    	return MedicalFileMapper.convertEntToDtos(medicalFileDao.findAll());        
     }
 }

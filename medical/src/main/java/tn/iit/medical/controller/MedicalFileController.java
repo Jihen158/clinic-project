@@ -1,5 +1,6 @@
 package tn.iit.medical.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import tn.iit.medical.dto.MedicalFileDto;
@@ -12,23 +13,16 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/api/medicalFiles")
 public class MedicalFileController {
+	
+	@Autowired
     private MedicalFileService medicalFileService;
 
-    public MedicalFileController(MedicalFileService medicalFileService) {
-        this.medicalFileService = medicalFileService;
-    }
 
     @PostMapping
     public void createMedicalFile(@Valid @RequestBody MedicalFileDto medicalFileDto) {
         medicalFileService.save(medicalFileDto);
     }
-
-    @GetMapping
-    public Collection<MedicalFileDto> getMedicalFiles() {
-        Collection<MedicalFileDto> medicalFileList = medicalFileService.findAll();
-        return medicalFileList;
-    }
-
+    
     @PutMapping
     public void updateMedicalFile(@Valid @RequestBody MedicalFileDto medicalFileDto) {
         medicalFileService.update(medicalFileDto);
@@ -38,5 +32,17 @@ public class MedicalFileController {
     public void deleteMedicalFile(@PathVariable("id") Integer id) {
         medicalFileService.deleteById(id);
     }
+
+    @GetMapping
+    public Collection<MedicalFileDto> getMedicalFiles() {
+        return medicalFileService.getAll();
+    }
+    
+    @GetMapping("/{id}")
+    public MedicalFileDto getMedicalFileById(@PathVariable("id") Integer id) {
+        return medicalFileService.getById(id);
+    }
+
+
 
 }

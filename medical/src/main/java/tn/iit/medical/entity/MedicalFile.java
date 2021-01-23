@@ -2,10 +2,12 @@ package tn.iit.medical.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@Table(name = "medicalFile")
 @Entity
 public class MedicalFile implements Serializable {
     private static final long serialVersionUID = 1L;

@@ -2,17 +2,20 @@ package tn.iit.medical.service;
 
 import java.util.List;
 
+
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import tn.iit.medical.dto.ItemDto;
 
+@Service
 public class StoreManagementService {
 	private final RestTemplate restTemplate;
 
@@ -21,6 +24,12 @@ public class StoreManagementService {
 		this.restTemplate = restTemplate;
 	}
 	
+	
+	public StoreManagementService() {
+		this.restTemplate = new RestTemplate();
+	}
+
+
 	public List<ItemDto> getAllItemsDto(){
 		UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://localhost:8082/api/item").build().encode();	
 		return restTemplate.exchange(uriComponents.toUri(), HttpMethod.GET, new HttpEntity<>(null, new HttpHeaders()),
