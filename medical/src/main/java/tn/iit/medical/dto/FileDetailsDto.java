@@ -10,10 +10,12 @@ public class FileDetailsDto {
     private LocalDateTime arrivalDate;
     private Integer quantity;
     private String descriptionItem;
-    //private MedicalFile medicalFile;
+    
+    
 	public FileDetailsDto() {
 		super();
 	}
+	
 	public Integer getId() {
 		return id;
 	}

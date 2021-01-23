@@ -11,16 +11,15 @@ import tn.iit.medical.entity.FileDetails;
 import tn.iit.medical.entity.MedicalFile;
 
 public class MedicalFileMapper {
-	
-	public static MedicalFileDto convertEntToDto(MedicalFile medicalFile) {
-		
+	// Medical File Entity --> DTO 
+	public static MedicalFileDto convertEntToDto(MedicalFile medicalFile) {		
 		MedicalFileDto medicalFileDto = new MedicalFileDto();
 		medicalFileDto.setId(medicalFile.getId());
 		medicalFileDto.setPatientName(medicalFile.getPatientName());	
 		medicalFileDto.setDetailsDtos(convertFileDetailsEntToDtos(medicalFile.getFileDetails()));
 		return medicalFileDto;	
 	}
-	
+	// DTO --> Entity 
 	public static MedicalFile convertDtoToEnt(MedicalFileDto medicalFileDto) {
 		MedicalFile medicalFile = new MedicalFile();
 		medicalFile.setId(medicalFileDto.getId());
@@ -34,24 +33,24 @@ public class MedicalFileMapper {
 						}).collect(Collectors.toList()));
 		return medicalFile;		
 	}
-	
-	public static Collection<MedicalFileDto> convertEntToDtos(Collection<MedicalFile> files) {
-		List<MedicalFileDto> filesDto = new ArrayList<>();
-		files.forEach(file -> {
-			filesDto.add(convertEntToDto(file));
-		   });
-           return filesDto;                            
+	// list of Entity -->  list of DTO
+	public static Collection<MedicalFileDto> convertEntToDtos(Collection<MedicalFile> medicalFiles) {
+		List<MedicalFileDto> medicalFileDtos = new ArrayList<>();
+		medicalFiles.forEach(file -> {
+			medicalFileDtos.add(convertEntToDto(file));
+		});
+           return medicalFileDtos;                            
     }
-	
-	public static List<FileDetailsDto> convertFileDetailsEntToDtos(Collection<FileDetails> details){
+	//*******************************************************
+	// FileDetails  list of Entity -->  list of DTO 
+	public static List<FileDetailsDto> convertFileDetailsEntToDtos(List<FileDetails> details){
 		List<FileDetailsDto> detailsDtos = new ArrayList<>();
-		 details.forEach(
-				 detail -> {
+		 details.forEach(detail -> {
 				 detailsDtos.add(convertFileDetailsEntToDto(detail));
 				 } );
 		 return detailsDtos;
 	 }   
-	
+	// FileDetails  Entity --> DTO 
 	public static FileDetailsDto convertFileDetailsEntToDto(FileDetails fileDetails) {
 		FileDetailsDto fileDetailsDto = new FileDetailsDto();
 		fileDetailsDto.setId(fileDetails.getId());
@@ -61,7 +60,7 @@ public class MedicalFileMapper {
 		fileDetailsDto.setArrivalDate(fileDetails.getArrivalDate());
 		return fileDetailsDto;	
 	}
-	
+	// DTO --> Entity 
 	public static FileDetails convertFileDetailsDtoToEnt(FileDetailsDto fileDetailsDto) {
 		FileDetails fileDetails = new FileDetails();
 		fileDetails.setId(fileDetailsDto.getId());

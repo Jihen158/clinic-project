@@ -17,7 +17,7 @@ public class MedicalFile implements Serializable {
     private String patientName;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicalFile")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicalFile", fetch = FetchType.EAGER)
     private List<FileDetails> fileDetails;
 
     public MedicalFile() {

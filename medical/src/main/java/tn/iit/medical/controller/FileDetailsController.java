@@ -24,6 +24,11 @@ public class FileDetailsController {
     public Collection<FileDetailsDto> getPrescribedMedication() {
         return fileDetailsService.findAll();
     }
+    
+    @GetMapping("/{id}")
+    public FileDetailsDto getPrescribedMedicationById(@PathVariable("id") Integer id) {
+        return fileDetailsService.getById(id);
+    }
 
     @PutMapping
     public void updatePrescribedMedication(@Valid @RequestBody FileDetailsDto fileDetailsDto) {
