@@ -1,15 +1,18 @@
-version: "3.9" 
+version: "3.7"
+
+volumes:
+  mysql-data:
 
 services:
-  storemanagment :
-    image: docker158/storemanagement
+  storemanagement:
+    image: storemanagement
     ports:
       - 8484:8082
     depends_on:
       - mysqlcon
 
-  medicalfile:
-    image: docker158/medical
+  medical:
+    image: medical
     ports:
       - 8383:8282
     depends_on:
@@ -17,12 +20,8 @@ services:
 
   mysqlcon:
     image: mysql
-    environment: 
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: clinicdb
+    environment:
+      - MYSQL_DATABASE=clinicdb
+      - MYSQL_ROOT_PASSWORD=root
     volumes:
       - mysql-data:/var/lib/mysql
-
-
-volumes:
-  mysql-data:

@@ -2,6 +2,8 @@ package tn.iit.medical.dto;
 
 import java.time.LocalDateTime;
 
+import tn.iit.medical.entity.MedicalFile;
+
 
 public class FileDetailsDto {
     private Integer id;
@@ -10,6 +12,7 @@ public class FileDetailsDto {
     private LocalDateTime arrivalDate;
     private Integer quantity;
     private String descriptionItem;
+    private MedicalFile medicalFile;
     
     
 	public FileDetailsDto() {

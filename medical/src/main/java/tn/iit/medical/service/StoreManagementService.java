@@ -31,13 +31,13 @@ public class StoreManagementService {
 
 
 	public List<ItemDto> getAllItemsDto(){
-		UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://storemanagment:8082/api/item").build().encode();	
+		UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://storemanagement:8082/api/item").build().encode();	
 		return restTemplate.exchange(uriComponents.toUri(), HttpMethod.GET, new HttpEntity<>(null, new HttpHeaders()),
 				new ParameterizedTypeReference<List<ItemDto>>() {}).getBody();	
 	}
 	
 	public ItemDto getItemById(Integer id) {
-		UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://storemanagment:8082/api/item")
+		UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://storemanagement:8082/api/item")
 				.path("/{id}").build().expand(id).encode();
 		ResponseEntity<ItemDto> res = restTemplate.exchange(uriComponents.toUri(), HttpMethod.GET, new HttpEntity<>(null, new HttpHeaders()),
 				ItemDto.class);
